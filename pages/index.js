@@ -1,5 +1,6 @@
 import { useMap, usePresence } from "@roomservice/react";
 import { useEffect } from "react";
+import Cursor from "../lib/Cursor.tsx";
 
 export default function Home() {
   const [map, setMap] = useMap("roomName", "mapName");
@@ -30,6 +31,9 @@ export default function Home() {
 
   return (
     <div>
+      {Object.entries(positions).map(([key, val]) => (
+        <Cursor key={key} x={val.x} y={val.y} />
+      ))}
       <button onClick={randomNumber}>Random Number</button>
       {map.get("number")}
     </div>
